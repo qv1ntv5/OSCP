@@ -1,0 +1,18 @@
+-------------------------------------------------
+Static Remote Port Forwarding
+
+
+ssh -N -R 127.0.0.1:<LISTENPORT>:<FORWARDEDIP>:<FORWARDEDPORT> <LOCALUSER>@<LOCALIP>
+
+#This command open a local port that listen internal connections and the connection is forwarded to a target machine through a one unique intermediate machine.
+
+#Example; ssh -N -R 127.0.0.1:2345:10.4.50.215:5432 kali@192.168.118.4
+
+-------------------------------------------------
+Dynamic Remote Port Forwarding
+
+ssh -N -R <LOCALPORT> <LOCALUSER>@<LOCALIP>
+
+#This command open a local port to make available a SocksProxy that will forward the connections over the SSH túnel to the target machine.
+
+#Example; ssh -N -R 9998 kali@192.168.118.4

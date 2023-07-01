@@ -1,0 +1,6 @@
+-------------------------------
+PowerShell
+
+Invoke-WebRequest//iwr//wget -Uri <URI> -OutFile "<BINPATH>"
+
+$webClient = [System.Net.WebClient]::new();$webClient.DownloadFile("<URI>", "<BINPATH>")

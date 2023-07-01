@@ -1,0 +1,23 @@
+-----------------------------------------------------------------
+Static Socket Forwarding
+
+
+ssh -N -L 0.0.0.0:<LISTENINGPORT>:<FORWARDEDIP>:<FORWARDEDPORT> <INTERMEDIARYSSHUSER>@<INTERMEDIARYIP> 
+
+#This command uses the SSH utility with the -N flag to not display a shell and the -L flag to setup a local port forwarding, a port forwarding along a local network.
+#The command accept as paramets the <LISTENINGPORT> of the first pawned machine, the <FORWARDEDIP> and <FORWARDEDPORT> of the target machine and ssh credentials of a 2º pawned machine.
+
+#Example; ssh -N -L 0.0.0.0:4455:172.16.50.217:445 database_admin@10.4.50.215
+
+------------------------------------------------------------------
+Dynamic Socket Forwarding
+
+
+ssh -N -D 0.0.0.0:<LISTENINGPORT> <INTERMEDIARYSSHUSER>@<INTERMEDIARYIP>
+
+#This command works almost the same above with the difference that with the -D flag it enables a SocksProxy at the <LISTENINGPORT> which forwards sockets to a target machine through the intermediary machine. We can interact witht he target machine through proxy chains but first we have to modify /etc/proxychains4.conf with the IP hosting the SocksProxy and the port.
+
+#Example; ssh -N -D 0.0.0.0:9999 database_admin@10.4.50.215
+
+
+#BOTH COMMANDS WORKS IN WINDOWS AND LINUX.

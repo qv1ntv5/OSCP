@@ -1,0 +1,5 @@
+- First, we try to trigger an error (we will success if we are before a in-band sqli). This can't be achieved if there is a blind sqli.
+
+- Then, if we success to trigger an error, the following step is to retrieve the numbers of columns with the ORDER BY 'n' method. We can confirm this by trigering a sleep(5) statement through a UNION SELECT null,...,null,sleep(5) --// 
+
+- When we discover the number of columns, we must discover what type of data bring back each colum, and then we are ready to retrieve information. 

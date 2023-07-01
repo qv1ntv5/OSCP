@@ -1,0 +1,8 @@
+Sometimes is important to try to add some chars before to assum that some detect/exploit paylod isn't valid. Some of them are:
+
+--  (There is a space after the double quotes).
+;<STATEMENT>-- (This is particullary true if we want to add a SLEEP statement,for example ;SELECT PG_SLEEP(5)-- //) 
+-- //
+-- /*
+
+And even more combinations.
