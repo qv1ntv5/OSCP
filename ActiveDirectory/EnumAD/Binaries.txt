@@ -1,0 +1,1 @@
+There are more binaries in /usr/share/windows-resources/ on KaliLinux.
