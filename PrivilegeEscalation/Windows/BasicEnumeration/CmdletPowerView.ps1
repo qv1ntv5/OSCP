@@ -30,4 +30,4 @@ Find-DomainShare #<--- Enumerate active shares on domain.
 #################################################################
 # Complex Scripts.
 
-foreach ($user in $(Get-NetUser | Select-Object -ExpandProperty Name)){echo "[+] $user"; $groups=$(Get-NetUser $user |Select-Object -ExpandProperty memberof -erroraction 'silentlycontinue');echo "[+] $Groups"; echo " "} #<--- Enumerate users and user's membresy.
+foreach ($user in $(Get-NetUser | Select-Object -ExpandProperty Name)){echo "[+] $user"; $groups=$(Get-NetUser $user |Select-Object -ExpandProperty memberof -erroraction 'silentlycontinue');echo "[+] $Groups"; echo " "} #<--- Enumerate users and user's membresy. 'ExpandProperty' is used in order to access only to the value instead of the structure name:value in order to operate with it later.
