@@ -1,4 +1,4 @@
-#################################################
+#############################################################
 
 #From a Batch cmd session on the same directory in which is stored PowerView:
 
@@ -8,7 +8,7 @@ Import-Module .\PowerView.ps1
 
 . .\PowerView.ps1
 
-################################################
+###############################################################
 
 # Once we have imported correctly PowerView, we have access to the following new cmdlets:
 
@@ -26,3 +26,8 @@ Get-ObjectAcl -Identity <object> | Select ObjectSID,ActiveDirectoryRights,Securi
 #For example, because we are only interested; Get-ObjectAcl -Identity "Management Department" | ? {$_.ActiveDirectoryRights -eq "GenericAll"} | select SecurityIdentifier,ActiveDirectoryRights.
 
 Find-DomainShare #<--- Enumerate active shares on domain.
+
+#################################################################
+# Complex Scripts.
+
+foreach ($user in $(Get-NetUser | Select-Object -ExpandProperty Name)){echo "[+] $user"; $groups=$(Get-NetUser $user |Select-Object -ExpandProperty memberof -erroraction 'silentlycontinue');echo "[+] $Groups"; echo " "} #<--- Enumerate users and user's membresy.
