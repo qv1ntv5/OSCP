@@ -8,6 +8,8 @@ Import-Module .\PowerView.ps1
 
 . .\PowerView.ps1
 
+#When using a network logon such as WinRM or a bind shell, Get-CimInstance and Get-Service will result in a "permission denied" error when querying for services with a non-administrative user. Using an interactive logon such as RDP solves this problem. THIS ALSO APPLIES OVER SOME CMDLETS OF POWERVIEW AND POWERUP THAT MAY NOT WORK UNTIL WE HAVE AN ADMINISTRATOR OR A GUI SESSION.
+
 ###############################################################
 
 # Once we have imported correctly PowerView, we have access to the following new cmdlets:
