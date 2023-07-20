@@ -1,3 +1,5 @@
+#In order to substitute a modificable binary that is running as an active service (for example mysql), we must first mv the binary in order to replace it. Otherwise the overwrite operation will triger an error.
+
 -------------------------------
 PowerShell
 
@@ -12,6 +14,8 @@ icacls "<FILEPATH>" <--- Check file/directory permissions.
 whoami /priv - /group <--- Check privileges or membership groups.
 
 Start/Restart/Stop-Service.
+
+shutdown /r /t 0 <--- Restart machine to trigger auto-mode services payloads.
 ------------------------------
 Bash
 
