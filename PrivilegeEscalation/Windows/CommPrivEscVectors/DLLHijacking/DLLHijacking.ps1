@@ -4,6 +4,11 @@
 
 Get-CimInstance -ClassName win32_service | Select Name,State,PathName | Where-Object {$_.State -like 'Running'}
 
+
+# May be this would be more useful. 
+
+Get-CimInstance -ClassName win32_service | Select Name,State,PathName | Where-Object {$_.State -like 'Running'} | Select-String -Pattern "system32*" -NotMatch
+
 # Then transfer this binaries onto a Windows machine where we have GUI acces and administrative user and monitorate the used .dll files by this binary with Procmon.
 
 # A binary/service could be vulnerable to this kind of attack if we manage to introduce a dll used by it in one of the following locations ordered by prority of system search:
