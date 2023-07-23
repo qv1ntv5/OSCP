@@ -29,7 +29,7 @@ Filter --> ProcessName | is | <binaryname>.exe | Include ---> Add ---> Apply #Ex
 
 #Then in Procmon we add a fitler for only search for dlls.
 
-Filter --> Operation |is | IRP_MJ_CREATE | Include ---> Add ---> Apply # 
+Filter --> Operation |is | IRP_MJ_CREATE (or CreateFile) | Include ---> Add ---> Apply # 
 
 #IRP_MJ_CREATE, detect when a file is tried to get created or opened, detec .dll files asociated with the binary.
 
@@ -54,6 +54,8 @@ Filter --> Operation |is | IRP_MJ_CREATE | Include ---> Add ---> Apply #
 
 #Once we have it, we use the following command in order to create a DLL library:
 
-x86_64-w64-mingw32-gcc <filecode> --shared -o <filename>.dll
+
+x86_64-w64-mingw32-gcc <filecode>.cpp --shared -o <filename>.dll #It is recommended to install it first if it appears errors using the command: sudo apt-get install mingw-w64
 
 #Then we transfer the dll onto the machine and subsitutue or place it in the correct place and restart the service getting our command executed.
+
