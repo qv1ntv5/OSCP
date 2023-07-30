@@ -4,7 +4,7 @@ ip=<IP>;gobuster dir -u http://$ip -w /usr/share/wordlists/dirbuster/directory-l
 
 #WebDir GoBuster enumeration.
 
-ip=10.10.10.56;gobuster dir -u http://$ip -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -t 50 -x / -o dir.$ip
+ip=10.10.10.56;gobuster dir -u http://$ip -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -t 50 -f -o dir.$ip
 
 
 ip=<IP>;gobuster vhost -u http://$ip -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt --append-domain -o vhost.$ip #<--- GoBuster subdomain enumeration. Add a -k to enumerate a SSL URI (https).
