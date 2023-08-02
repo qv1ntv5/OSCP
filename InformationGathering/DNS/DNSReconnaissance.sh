@@ -16,3 +16,15 @@ host <ip> <DNSserver>
 #A one-line version of the above process is:
 
 for dnserver in $(for ip in $(nmap -sn 10.10.10.0/24 | grep for | cut -d " " -f5); do sudo nmap -sU -p53 -T5 $ip | grep -v "open|filtered" | grep open -C6 | grep for | cut -d " " -f5;done); do host <ip> $dnserver;done
+
+##############################################################################
+
+#If we manage to retrieve a domain we can attemp to retrieve the name servers and then attemp a zonetransfer
+
+host -t ns <domain> [dig -t ns <domain>]
+
+dig axfr <domain> @<nameserver>
+
+# Or directly used over it an automated DNS enumeration tool
+
+dnsenum <domain>
