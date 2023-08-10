@@ -1,0 +1,3 @@
+1. Open a new tab in Firefox.Enter "about:config" in the address bar and hit Enter/Return.
+2. In the search box located above the list, enter "security.tls.version.min".
+3. Locate the preference with the name "security.tls.version.min" and modify its value to ‘1’
