@@ -1,4 +1,4 @@
-crackmapexec smb <ip> -u <usernamelist> -p '<ip>' -d <domain> --continue-on-success #<--- Perform several log-in tries to a SMB service in order to discover valid credentials.
+crackmapexec smb <ip> -u <usernamelist> -p '<PASS>' -d <domain> --continue-on-success #<--- Perform several log-in tries to a SMB service in order to discover valid credentials.
 
 #For example; crackmapexec smb 192.168.50.75 -u users.txt -p 'Nexus123!' -d corp.com --continue-on-success.
 
