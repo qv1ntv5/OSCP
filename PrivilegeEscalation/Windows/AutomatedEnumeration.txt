@@ -1,0 +1,5 @@
+Download winpeas from Carlos Polop's release page:
+
+https://github.com/carlospolop/PEASS-ng/releases/tag/20230903-188479ae
+
+

@@ -1,6 +1,6 @@
 #Requirements:
 
-#  - Credentials from a user in the Local Administrator and Domain User groups.
+#  - Credentials from a user in the Local Administrator and Domain User groups on target machine.
 
 #It uses the New-Cimsession powershell's cmdlet in the $session var in order to spawn a new process in a remote target within an AD network.
 

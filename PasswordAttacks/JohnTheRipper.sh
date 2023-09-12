@@ -1,4 +1,4 @@
-john --wordlist=<wordlists> --rules=<rulename> <hashfile>
+john --wordlist=<wordlists> [--rules=<rulename>] <hashfile>
 
 #John the ripper store its rules in /etc/john/john.conf, by the label:
 

