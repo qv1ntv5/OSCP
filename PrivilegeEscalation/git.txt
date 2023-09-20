@@ -1,0 +1,5 @@
+On .git directory;
+
+'git log' --- to see recents commits.
+
+ git diff <commit1> <commit2> ---  To see differences in the code between commits.

@@ -1,0 +1,20 @@
+In the final part of the BloodHound's GUI we can find a section in which we can type RawQueries. This is a very useful tool that we can use along with the PreBuilt queries in order to extract information. 
+
+We can find more information about RawQueries in the following URL: https://hausec.com/2019/09/09/bloodhound-cypher-cheatsheet/
+
+Some of the more interesting RawQueries we can use are:
+
+
+MATCH (m:User) RETURN m --- Find all users on domain.
+
+MATCH (m:Computer) RETURN m --- Find all computers object on domain.
+
+
+We can also combine this results with the following PreBuilt queries:
+
+
+Find Workstations where Domain Users can RDP
+Find Servers where Domain Users can RDP
+Find Computers where Domain Users are Local Admin
+Shortest Path to Domain Admins from Owned Principals
+
