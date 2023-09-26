@@ -16,3 +16,4 @@
 #	- The ADMIN$ share or the File and Printing share are not habilitated.
 #
 #This kind of attack can be launched with other tools.
+# Is worth mention that this only can be achieve with a NTLM hash, which is not the same than a NTLMv2 hash. 
