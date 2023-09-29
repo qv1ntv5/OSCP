@@ -9,6 +9,7 @@ MATCH (m:User) RETURN m --- Find all users on domain.
 
 MATCH (m:Computer) RETURN m --- Find all computers object on domain.
 
+MATCH p = (c:Computer)-[:HasSession]->(m:User) RETURN p --- Find users with active sessions.
 
 We can also combine this results with the following PreBuilt queries:
 
