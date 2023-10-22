@@ -1,0 +1,21 @@
+In this file we gonna see how we can obtain precise information about a directory on Windows and manage it on Linux.
+
+
+# First, we list the contents of a directory with the following CmdLet:
+
+	Get-ChildItem -File -Path <PATH> -Recursive | Select-Object -Property Name, CreationTime, FullName
+
+
+
+# Then, we transfer this file into our Kali machine through Netcat or other mecanism.
+# Once in our kali machine we need to format the content of the file in order to manage it as a pure text UTF-8 file.
+
+	vim +"set nobomb | set fenc=utf8 | x" filename.txt
+
+
+
+# Now the file is ready to get filter by us. SOme of the interesting we wanna do with this file are:
+
+# - Check files without extension:  cat <FILENAME> | cut -d " " -f1 | grep -v '\.'
+# - Check existent extensions:      cat <FILENAME> | cut -d " " -f1 | cut -d '.' -f2 | sort | uniq -i
+# - CHeck files with extension:     cat <FILENAME> | grep -i '<EXTENSION>'
