@@ -1,0 +1,1 @@
+- If we use PortScanner.ps1, if recommended to not scann al 65534 ports because it can crash the machine. The recommended thing is to scan in ranges from 0 to 10000.
