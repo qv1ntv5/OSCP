@@ -3,7 +3,7 @@ In this file we gonna see how we can obtain precise information about a director
 
 # First, we list the contents of a directory with the following CmdLet:
 
-	Get-ChildItem -File -Path <PATH> -Recursive | Select-Object -Property Name, CreationTime, FullName
+	Get-ChildItem -File -Path <PATH> -Recurse | Select-Object -Property Name, CreationTime, FullName
 
 
 
