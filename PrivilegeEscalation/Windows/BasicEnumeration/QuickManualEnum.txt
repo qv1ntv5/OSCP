@@ -5,7 +5,9 @@ In this file we gonna see how we can obtain precise information about a director
 
 	Get-ChildItem -File -Path <PATH> -Recurse | Select-Object -Property Name, CreationTime, FullName
 
+# We can also transfer to a file through a cmd enviroment (not powershell) with the following command in an directory in which we have write permissions:
 
+	powershell -c "Get-ChildItem -File -Path <PATH> -Recurse | Select-Object -Property Name, CreationTime, FullName" > <filename>.txt
 
 # Then, we transfer this file into our Kali machine through Netcat or other mecanism.
 # Once in our kali machine we need to format the content of the file in order to manage it as a pure text UTF-8 file.
