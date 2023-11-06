@@ -1,0 +1,3 @@
+Las aplicaciones web generalmente no mandan una única request al servidor. Para cargar el documento generalmente se realizan una serie de requests a otras partes de la página web. Estas requests pueden verse desde la pestaña Network del panel de control de DevTools en Firefox y puede ser utilizada para revelar páginas/scripts o secciones de la web que contienen información sensible teniendo así un mapeo de la web más completo pudiendo revelar directorios ocultos o páginas con nombres impredecibles.
+
+Click-Derecho > Inspect > Network > (Refresh page)
