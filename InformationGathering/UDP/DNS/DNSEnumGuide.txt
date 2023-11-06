@@ -1,0 +1,1 @@
+We can follow this guide in order to enumerate the DNS server: https://book.hacktricks.xyz/network-services-pentesting/pentesting-dns

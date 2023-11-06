@@ -1,0 +1,1 @@
+Group Policy Preferences, is a file where administrators creates domain policies with embedded credentials. This credentials are stored in the XML attributes ‘name’ and ‘cpassword’. We can use gpp-decrypt tool in order to decrypt and obtain a plain text password of the encrpted credentials.
