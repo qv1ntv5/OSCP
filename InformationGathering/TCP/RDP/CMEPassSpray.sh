@@ -2,4 +2,6 @@
 
 crackmapexec rdp <ip> -u <username/file> -p <password/file> [-d <domain>] --continue-on-success
 
+# This method of enumeration often is unrealiable. Try also in combination with others to discard false negatives/positives.
+
 

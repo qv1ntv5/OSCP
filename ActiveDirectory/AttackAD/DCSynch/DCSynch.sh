@@ -2,7 +2,9 @@
 # - Replicating Directory Changes
 # - Replicating Directory Changes All
 # - Replicating Directory Changes in Filtered Set
-#
+
+#!!!!!WE MUST NOTE THAT THIS COULD BE A PRIVESC VECTOR IF WE MANAGE TO FIND A NON-PRIVILEGE USER THAT CAN PERFORM A DCSYNCH.¡¡¡¡¡
+
 # Or we are part of Domain Admins, Enterprise Admins or Administrator groups we can perform a Domain Controller impersonation.
 
 # If we are in our kali session out from the AD network we could still use the 'impacket-secretsdump' with credentials from a user that fullfills the above requesites.

