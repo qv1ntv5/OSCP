@@ -1,0 +1,12 @@
+# Some format files that are protected with passwords (passphrases), like .zip, ssh keys or KeePass password managers files, are susceptible to be cracked with the help of some auxiliary tools that form part of JohnTheRipper kit.
+# This tools extract from the file the hash of the passphrase in order to be capable to crack it with John or Hashcat. SOme of this modules are:
+
+ssh2john <id_rsa> > <outputfile>.hash
+zip2john <zipfile> > <outputfile>.hash
+keepass2john <kdbxfile> > <outputfile>.hash
+pfx2john <pfxfile> > <outputfile>.hash
+
+# This are a few of them but essentially there are more, basically any protected file format can pe cracked this way. Always search in google.
+# Then, those <outputfiles> are susceptible to be cracked with a powerfull wordlists (like rockyou.txt) and a crack tool like JohnTheRipper.
+
+
