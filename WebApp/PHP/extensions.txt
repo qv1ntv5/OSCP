@@ -1,0 +1,5 @@
+If .php extension is blacklisted, we still can try the following extensions:
+
+- .phtml
+- .phar
+- .pht

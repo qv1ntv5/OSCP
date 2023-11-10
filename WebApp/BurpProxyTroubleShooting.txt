@@ -1,0 +1,25 @@
+If we launch an exploit against a webapp and fails, we can attemp to init a proxy that redirects request over our target in order to see if we can check the request the exploits send in order to solve the problem.
+
+- Open BurpSuite.
+- Proxy > Proxy Settings
+
+Then a new menu will open:
+
+- Tools > Proxy > Proxy listeners
+- Edit 127.0.0.1:8080
+
+Then a new menu will open:
+
+- Request handling 
+
+	-> Redirect to host: <TARGETIP>
+	-> Redirect to port: <TARGETPORT>
+
+- OK
+
+
+Then all we have to do is launch the exploit against 127.0.0.1:8080 and press Intercept Request. 
+Once we intercept one request:
+
+- Right click > Do intercept > Response of this request.
+- Forward
