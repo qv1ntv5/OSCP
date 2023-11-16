@@ -7,18 +7,6 @@ Enumeración Pre-explotación.
 - Seguidamente, enumerar uno a uno los servicios encontrados. La preferencia de los servicios debe establacerse en base al tiempo que lleva esta enumeración en comparación con los posibles resultados a obtener. Cuánto más tiempo consuma un proceso de enumeración menos preferencia tiene, así por ejemplo, un servicio FTP tendrá normalmente más preferencia que una página web de ser escaneado primero.
 
 
-WEBAPP
-
-- Acceder desde el navegador y explorar las páginas directamente accesibles. (Recolectar información como nombres de usuarios o posible software corriendo en la página web).
-- Comprobar el Wappalzyer, código fuente y la pestaña Network de DevTools en busca de más páginas, scripts, dominios e incluso credenciales.
-- Realizar con GoBuster una enumeración de directorios y ficheros. IMPORTANTE, los directorios catalogados con un 403 (Forbidden) son susceptibles a su vez de ser fuzzeados. 
-	Que un directorio no permita acceso no significa que no tengamos acceso a ficheros dentro de ese directorio.
-
-- Si hay CMSs (Wordpress, PHPMyAdmin,...) investigar credenciales por defecto (username:username, + buscar en google) y a poder ser version precisa del CMS en busca de exploits públicos.
-- Por último, seguir la guía de HackTricks (https://book.hacktricks.xyz/welcome/readme) para el protocolo en cuestion.
-
-
-
 SERVICIOS GENERICOS
 
 En este campo entran todos aquellos servicios que no conformen un método de enumeración conocido: FTP, SMB, RSYNC, etc.
@@ -26,6 +14,22 @@ En este campo entran todos aquellos servicios que no conformen un método de enu
 - Lanzar scripts NSE con nmap: nmap --script <protocolo>* <ip> -p<puerto> -T5 (nmap --script smb* 10.10.10.10 -p139,445 -T5).
 - Probar autenticación por defecto o anonima, con crackmapexec e Hydra (importante utilizar varias herramientas o lanzar varias veces estas herramietnas para evitar posibles falsos resultados).
 	Es importante recordar que crackmapexec no es fiable en cuanto a RDP, es mejor utilizar Hydra o llegar incluso a probar manualmente.
+
+- Por último, seguir la guía de HackTricks (https://book.hacktricks.xyz/welcome/readme) para el protocolo en cuestion.
+
+
+WEBAPP
+
+- Acceder desde el navegador y explorar las páginas directamente accesibles. (Recolectar información como nombres de usuarios o posible software corriendo en la página web).
+- Comprobar el Wappalzyer, código fuente y la pestaña Network de DevTools en busca de más páginas, scripts, dominios e incluso credenciales.
+- Realizar con GoBuster una enumeración de directorios y ficheros. IMPORTANTE, los directorios catalogados con un 402 (Forbidden) son susceptibles a su vez de ser fuzzeados. 
+	Que un directorio no permita acceso no significa que no tengamos acceso a ficheros dentro de ese directorio.
+
+- Si hay CMSs (Wordpress, PHPMyAdmin,...) investigar credenciales por defecto (username:username, + buscar en google) y a poder ser version precisa del CMS en busca de exploits públicos.
+
+- En última instancia, intentar un ataque de fuerza bruta en servicios sobre todo si encontramos un Auth RCE pero no hemos encontrado credenciales. 
+	-> Con usuarios recopilados en la propia página web o en algún servicio.
+	-> Con CeWL
 
 
 PRIVESC

@@ -11,3 +11,7 @@ cat <outfile>.txt | grep -v 'fileSize:0' | grep -v 'NO_ACCESS'
 smbmap --download '<smbpathtofile>' -H <ip> [-u <USERNAME> -p <PASSWORD>]
 
 # <smbpathtofile> is required in the format granted by  the <outfile>.txt file.
+#
+# We can download the entire repository with the following line:
+
+for line in $(cat <outfile>.txt | cut -d ',' -f5 | cut -d':' -f2);do smbmap --download $line  -H <ip> [-u <username> -p <password>];done

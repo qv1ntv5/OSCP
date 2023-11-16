@@ -1,0 +1,1 @@
+- $_SERVER['DOCUMENT_ROOT']: Gives root directory of webserver (usefule to directory traversal, SQLinjection, file upload, etc)

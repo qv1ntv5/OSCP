@@ -1,0 +1,2 @@
+cewl http://192.168.233.61:8081/ | grep -v CeWL > custom-wordlist.txt
+cewl --lowercase http://192.168.233.61:8081/ | grep -v CeWL  >> custom-wordlist.txt
