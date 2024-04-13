@@ -1,0 +1,1 @@
+You can view what process are currently running in real time if you use pspy64.
