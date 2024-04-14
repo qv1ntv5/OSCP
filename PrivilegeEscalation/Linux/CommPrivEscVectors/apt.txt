@@ -1,0 +1,9 @@
+When an apt update is being executed, then the scripts on /etc/apt/apt.conf.d/ are executed with user security context that launch the update.
+So, if another user is launching an apt update and you have writeable permissions over the mentioned directory you have RCE as the user that is launching the update.
+
+For more information you can check this guides:
+
+- https://www.cyberciti.biz/faq/debian-ubuntu-linux-hook-a-script-command-to-apt-get-upgrade-command/
+- https://systemweakness.com/code-execution-with-apt-update-in-crontab-privesc-in-linux-e6d6ffa8d076
+
+
