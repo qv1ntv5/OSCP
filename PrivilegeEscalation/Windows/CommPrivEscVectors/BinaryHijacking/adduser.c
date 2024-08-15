@@ -1,5 +1,7 @@
 #include <stdlib.h>
 
+//Compiling: x86_64-w64-mingw32-gcc adduser.c -o <SERVICE>.exe
+
 int main ()
 {
   int i;
