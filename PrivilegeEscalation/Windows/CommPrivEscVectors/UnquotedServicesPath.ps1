@@ -20,6 +20,7 @@
 #   RX            Read and execute access
 #   R             Read-only access
 #   W             Write-only access
+
 ######################################################################
 #Enumeration.
 #List Name,State,Paths of services.
