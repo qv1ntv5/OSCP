@@ -54,8 +54,23 @@ Filter --> Operation |is | IRP_MJ_CREATE (or CreateFile) | Include ---> Add --->
 
 #Once we have it, we use the following command in order to create a DLL library:
 
-
 x86_64-w64-mingw32-gcc <filecode>.cpp --shared -o <filename>.dll #It is recommended to install it first if it appears errors using the command: sudo apt-get install mingw-w64. If there is any problem with the installation: sudo apt-get update; sudo apt-get install --reinstall build-essential.
 
 #Then we transfer the dll onto the machine and subsitutue or place it in the correct place and restart the service getting our command executed.
+Restart-Service <SERVICE_NAME> #Using Powershell.
 
+#Check users:
+net user
+
+#Check localgroups:
+net localgroup administrators
+
+#To run something as other user:
+runas /user:<USER> cmd/powershell
+
+#If you had any issues to get a flag using runas due to permissions:
+1.- Run CMD/Powershell as administrator
+2.- Change user to you recent added user
+3.- Introduce password manually.
+
+#With this everything should be OK to do any action (like read an Administrator's flag) as Admin.
