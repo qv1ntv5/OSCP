@@ -1,6 +1,10 @@
 #include <stdlib.h>
 #include <windows.h>
 
+// Compiling: x86_64-w64-mingw32-gcc <filecode>.cpp --shared -o <filename>.dll
+// Troubleshooting: It is recommended to install it first if it appears errors using the command: sudo apt-get install mingw-w64. 
+// If there is any problem with the installation: sudo apt-get update; sudo apt-get install --reinstall build-essential.
+
 BOOL APIENTRY DllMain(
 HANDLE hModule,// Handle to DLL module
 DWORD ul_reason_for_call,// Reason for calling function
