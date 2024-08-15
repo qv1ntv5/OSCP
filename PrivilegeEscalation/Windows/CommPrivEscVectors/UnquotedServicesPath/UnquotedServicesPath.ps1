@@ -30,6 +30,8 @@ Get-CimInstance -ClassName win32_service | Select Name,State,PathName
 
 #Displays unquoted bin paths from services.
 wmic service get name,pathname |  findstr /i /v "C:\Windows\\" | findstr /i /v """ 
+>
+>"
 
 #Checking wether we can start/stop/restart services or not: 
 Start-Service <SERVICE_NAME>
