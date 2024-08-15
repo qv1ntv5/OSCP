@@ -3,12 +3,12 @@
 ######################################################################
 #### icacls permissions mask ####
 
-# +Mask+++++++Permissions+
-#   F          Full access
-#   M          Modify access
-#   RX         Read and execute access
-#   R          Read-only access
-#   W          Write-only access
+# + Mask +++++++ Permissions +
+#   F             Full access
+#   M             Modify access
+#   RX            Read and execute access
+#   R             Read-only access
+#   W             Write-only access
 ######################################################################
 -------------------------------
 ######### From PowerShell #########
